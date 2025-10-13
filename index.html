@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Socium — Variação Social do Project God</title>
+  <meta name="description" content="Project Socium: estudo da emergência de ecossistemas sociais. Pesquisa, protocolo e relatórios." />
+  <style>
+    :root{
+         --bg:#0f1724;
+         --card:#0b1220;
+         --muted:#9aa6b2;
+         --accent:#7dd3fc;
+         --accent-2:#60a5fa;
+         --glass: rgba(255,255,255,0.04);
+         --radius:14px;
+         --maxw:1100px;
+         --mono: 'Segoe UI Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    }
+
+    *{
+    box-sizing:border-box
+}
+    html,body{
+        height:100%
+}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#071024 0%, #07172b 60%);
+      color:#e6eef6;
+     -webkit-font-smoothing:antialiased;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:48px 20px;
+    }
+    .site{width:100%;
+    max-width:var(--maxw)}
+    header{
+        display:flex;
+        align-items:center;
+        gap:18px;
+        margin-bottom:28px}
+
+    .logo{width:64px;
+        height:64px;
+        border-radius:12px;
+        background:linear-gradient(135deg,var(--accent),var(--accent-2));
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:700;
+        color:#022;
+        box-shadow:0 6px 20px rgba(96,165,250,0.12)}
+    .brand{line-height:1}
+    .brand h1{margin:0;
+        font-size:20px}
+    .brand p{margin:0;
+        color:var(--muted);
+        font-size:13px}
+
+    nav{margin-left:auto}
+    nav a{color:var(--muted);text-decoration:none;
+        margin-left:18px;
+        font-size:14px}
+    nav a.cta{background:var(--accent);
+        color:#042;
+        padding:8px 12px;
+        border-radius:999px;
+        margin-left:12px;
+        font-weight:600}
+
+    .hero{display:grid;
+        grid-template-columns:1fr 380px;
+        gap:20px;
+        margin-bottom:26px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        padding:20px;
+        border-radius:var(--radius);
+        box-shadow:0 6px 30px rgba(2,6,23,0.6);
+}
+
+    .intro h2{margin:0 0 8px 0}
+    .intro p{color:var(--muted);
+        margin:0 0 12px 0
+}
+
+    .protocol-card{display:flex;
+        flex-direction:column;
+        gap:10px}
+    .protocol-card button{background:transparent;
+        border:1px solid rgba(125,211,252,0.14);
+        color:var(--accent);padding:10px;
+        border-radius:10px;
+        cursor:pointer}
+
+    .grid{display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:18px;
+        margin-bottom:22px}
+    .panel h3{margin:0 0 10px 0}
+    .muted{color:var(--muted);
+        font-size:14px}
+
+    .content{display:grid;
+        grid-template-columns:1fr 320px;
+        gap:20px}
+    main{min-height:400px}
+    aside{position:sticky;
+        top:24px}
+
+    .accordion{margin-top:8px}
+    .acc-item{background:var(--glass);
+        padding:12px;border-radius:10px;
+        margin-bottom:8px}
+    .acc-item summary{list-style:none;
+        cursor:pointer;
+        outline:none}
+    .acc-item[open]{background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent)}
+
+    footer{margin-top:28px;text-align:center;
+        color:var(--muted);
+        font-size:13px;
+        padding:12px}
+
+    
+    .viewer{background:#020617;
+        padding:12px;
+        border-radius:10px;
+        max-height:420px;
+        overflow:auto;
+        border:1px solid rgba(255,255,255,0.03)}
+    pre{white-space:pre-wrap;
+        font-family:var(--mono);
+        color:#cfeefd}
+
+    
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .content{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    
+    .badge{font-size:12px;
+        padding:6px 8px;
+        border-radius:999px;
+        background:rgba(255,255,255,0.03);
+        color:var(--muted)}
+
+    
+    .btn-primary{background:var(--accent);
+        color:#042;
+        padding:10px 14px;
+        border-radius:10px;
+        border:none;
+        cursor:pointer;
+        font-weight:700}
+    .btn-ghost{background:transparent;
+        border:1px solid rgba(255,255,255,0.04);
+        padding:8px 12px;
+        border-radius:10px;
+        color:var(--muted);
+        cursor:pointer}
+
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="logo">P.S.O.S</div>
+      <div class="brand">
+        <h1>Project Socium</h1>
+        <p>Variação Social — Project God</p>
+      </div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#metodo">Metodologia</a>
+        <a href="#protocol">Protocolo</a>
+        <a href="#relatorios">Relatórios</a>
+        <a class="cta" href="#contato">Contribuir</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card intro">
+        <h2>Estudo da emergência de ecossistemas sociais</h2>
+        <p class="muted">Project Socium investiga como grupos humanos se auto-organizam em ambientes controlados — escolas, familiares, públicos, comunidades digitais e outros microambientes.</p>
+        <div class="grid">
+          <div class="panel card">
+            <h3>Resumo</h3>
+            <p class="muted">Ambientes controlados não geram uniformidade, geram complexidade. O Socium mapeia formação de grupos, papéis sociais e normas emergentes.</p>
+          </div>
+          <div class="panel card">
+            <h3>Objetivo</h3>
+            <p class="muted">Entender como microssociedades surgem, se mantêm e se transformam.</p>
+          </div>
+          <div class="panel card">
+            <h3>Aplicações</h3>
+            <p class="muted">Educação, entendimento de antropologia, gestão organizacional.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn-primary" onclick="openSection('protocol')">Ver protocolo</button>
+          <button class="btn-ghost" onclick="downloadProtocol()">Baixar protocolo TXT</button>
+          <span class="badge">Versão: 1.0 • 2025</span>
+        </div>
+      </div>
+
+      <aside class="card protocol-card">
+        <h3>Protocolo Socium</h3>
+        <p class="muted">Nome oficial: <strong>P.S.O.S (Protocolo Socium de Observação Social)</strong></p>
+        <div class="viewer" id="protocolViewer">
+<pre id="protocolText">Protocolo Socium de Observação Social — Resumo
+
+Identificação
+- Data
+- Horário de início/ término
+- Local
+- Observador
+
+Ambiente e Contexto
+- Descrição do espaço
+- Clima
+- Disposição física
+
+Dinâmica social observada
+- Agrupamentos naturais
+- Lideranças informais
+- Isolamentos/exclusões
+- Comunicação predominante
+- Tópicos e símbolos
+- Reação às regras
+
+Padrões emergentes
+- Subgrupos visíveis
+- Influência simbólica
+- Mudanças com presença/ausência de autoridade
+
+Reflexão do observador
+- Impressão geral
+- Fatores de ordem
+- Hipóteses iniciais</pre>
+        </div>
+      </aside>
+    </section>
+
+    <section class="content">
+      <main class="card" id="sobre">
+        <h2>Sobre</h2>
+        <p class="muted">Project Socium é uma variação do Project God que trata a vida social como um ecossistema: relações, ritos e hierarquias nascem da convivência. O objetivo é documentar padrões emergentes com responsabilidade e respeito aos participantes.</p>
+
+        <h3 id="metodo">Metodologia</h3>
+        <p class="muted">Usamos observação participante/observador, registros qualitativos e análises de redes sociais. Ambientes escolhidos incluem escolares, familiáres, públicos, e comunidades digitais. As intervenções são mínimas; qualquer alteração é registrada.</p>
+
+        <div class="accordion">
+          <details class="acc-item" open>
+            <summary><strong>Passos do estudo</strong></summary>
+            <div style="margin-top:8px;color:var(--muted)">
+              1. Seleção do ambiente. <br>
+              2. Observação inicial (mapa da sala e clima). <br>
+              3. Sessões de registro usando o protocolo. <br>
+              4. Intervenções controladas (quando aplicável). <br>
+              5. Análise e cruzamento dos relatórios trimestrais.
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary><strong>Ética</strong></summary>
+            <div style="margin-top:8px;color:var(--muted)">Consentimento, anonimato e não-manipulação são obrigatórios. O objetivo é compreender, não dirigir (Claro, opcioal).</div>
+          </details>
+
+          <details class="acc-item">
+            <summary><strong>Ferramentas</strong></summary>
+            <div style="margin-top:8px;color:var(--muted)">Registros manuscritos, gravação de áudio (com consentimento), planilhas e visualização de redes.</div>
+          </details>
+        </div>
+
+        <h3 id="protocol">Protocolo (versão resumida)</h3>
+        <p class="muted">Use o protocolo para registrar: identificação, ambiente, dinâmicas, padrões emergentes, situações notáveis e reflexões do observador. O foco é descritivo e interpretativo.</p>
+
+        <h3 id="relatorios">Relatórios</h3>
+        <p class="muted">Os relatórios são trimestrais e compõem um diário de observação integrado. Aqui você pode enviar, visualizar ou baixar os relatórios para análise coletiva.</p>
+
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <input id="reportTitle" placeholder="Proprietário do relatório" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted)" />
+          <input id="reportTitle" placeholder="Relatório" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted)" />
+          <button class="btn-ghost" onclick="saveDraft()">Salvar rascunho</button>
+          <button class="btn-primary" onclick="publishReport()">Enviar relatório</button>
+        </div>
+
+        <h4 style="margin-top:18px">Relatórios enviados</h4>
+        <div id="reportsList" style="margin-top:8px;color:var(--muted)">Nenhum relatório enviado ainda.</div>
+
+      </main>
+
+      <aside class="card">
+        <h3>Contato</h3>
+        <p class="muted">Coordenador: Nathan V. Gomes</p>
+        <p class="muted">Email: (nathanel.vinicius03@gmail.com)</p>
+        <p class="muted">Rede: nvinicius__vx16 (Instagram)</p>
+
+        <h3 style="margin-top:12px">Recursos</h3>
+        <p class="muted">- Protocolo resumido disponível para download.<br>- Modelo de relatório trimestral.<br>- Espaço para dúvidas e contribuições.</p>
+      </aside>
+    </section>
+
+    <footer class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted">© Project Socium • 2025</div>
+        <div class="muted">Criado para o Trabalho de Campo — Project God</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+   
+    function openSection(id){
+      location.hash = id;
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    }
+
+   
+    function downloadProtocol(){
+      const text = document.getElementById('protocolText').innerText;
+      const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Protocolo_Socium.txt';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    (temporary)
+    function saveDraft(){
+      const t = document.getElementById('reportTitle').value.trim();
+      if(!t){alert('Dê um título ao rascunho.');return}
+      const d = {title:t, body:'(rascunho)', date:new Date().toLocaleString()};
+      let drafts = JSON.parse(localStorage.getItem('socium_drafts')||'[]');
+      drafts.push(d); localStorage.setItem('socium_drafts', JSON.stringify(drafts));
+      alert('Rascunho salvo localmente.');
+    }
+
+    function publishReport(){
+      const t = document.getElementById('reportTitle').value.trim();
+      if(!t){alert('Dê um título ao relatório antes de enviar.');return}
+      const r = {title:t, date:new Date().toLocaleString(), content:'Relatório enviado (texto não incluído)'};
+      let reports = JSON.parse(localStorage.getItem('socium_reports')||'[]');
+      reports.unshift(r); localStorage.setItem('socium_reports', JSON.stringify(reports));
+      renderReports();
+      alert('Relatório enviado (salvo localmente).');
+      document.getElementById('reportTitle').value='';
+    }
+
+    function renderReports(){
+      const list = document.getElementById('reportsList');
+      const reports = JSON.parse(localStorage.getItem('socium_reports')||'[]');
+      if(!reports.length){ list.innerText='Nenhum relatório enviado ainda.'; return }
+      list.innerHTML = '';
+      reports.forEach(r=>{
+        const el = document.createElement('div'); el.style.padding='8px 10px'; el.style.borderRadius='8px'; el.style.marginBottom='8px'; el.style.background='rgba(255,255,255,0.02)';
+        el.innerHTML = `<strong>${r.title}</strong> <div style="font-size:13px;color:var(--muted)">${r.date}</div>`;
+        list.appendChild(el);
+      })
+    }
+
+    renderReports();
+  </script>
+</body>
+</html>
