@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colaboradores – Project Socium</title>
+  <style>
+
+    :root {
+        --maxw:1100px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0b0b0b;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    *{
+    box-sizing:border-box
+}
+
+    header {
+      background-color: #111;
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid #444;
+    }
+
+    header h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      background-color: #181818;
+      text-align: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #333;
+    }
+
+    nav a {
+      color: #ddd;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #00bcd4;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    form {
+      background-color: #121212;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      margin-top: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0097a7;
+    }
+
+    .list {
+      background-color: #101010;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .collab-item {
+      background-color: #181818;
+      border-left: 3px solid #00bcd4;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Project Socium</h1>
+  <hr>
+</header>
+
+<div class="maxw"> 
+
+    <nav>
+        <a href="index.html">Início</a>
+</nav>
+
+<main>
+  <h2>Subclasse: Colaboradores</h2>
+  <p>
+      Os <strong>Colaboradores</strong> do Project Socium são voluntários que dedicam tempo e energia para expandir o alcance do projeto.  
+      Seu papel é apresentar a proposta, os valores e a metodologia do Socium para novas pessoas, escolas e grupos de estudo.  
+    Cada colaborador é um elo de conexão entre o conhecimento e a prática social observacional.
+  </p>
+
+  <h2>Cadastro de Colaborador</h2>
+  <form id="colabForm">
+    <label>Nome completo:</label>
+    <input type="text" id="nome" required>
+    
+    <label>Função ou área de atuação:</label>
+    <input type="text" id="funcao" required>
+    
+    <label>Motivação para colaborar:</label>
+    <textarea id="motivacao" rows="3" required></textarea>
+    
+    <label>Data de ingresso:</label>
+    <input type="date" id="data" required>
+    
+    <button type="submit">Registrar Colaborador</button>
+</form>
+
+<div class="list">
+    <h2>Colaboradores Registrados</h2>
+    <div id="colabList"></div>
+</div>
+
+  <button onclick="baixarCertificado()">Baixar Modelo de Certificado</button>
+</main>
+
+<footer>
+    © 2025 Project Socium – Todos os direitos reservados
+</footer>
+</div>
+
+<script>
+  const form = document.getElementById('colabForm');
+  const list = document.getElementById('colabList');
+
+  function carregarColaboradores() {
+    const dados = JSON.parse(localStorage.getItem('colaboradores')) || [];
+    list.innerHTML = '';
+    dados.forEach((c, i) => {
+      const div = document.createElement('div');
+      div.classList.add('collab-item');
+      div.innerHTML = `
+        <strong>${c.nome}</strong> – ${c.funcao}<br>
+        <em>Motivação:</em> ${c.motivacao}<br>
+        <small>Ingresso: ${c.data}</small>
+      `;
+      list.appendChild(div);
+    });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const novo = {
+      nome: document.getElementById('nome').value,
+      funcao: document.getElementById('funcao').value,
+      motivacao: document.getElementById('motivacao').value,
+      data: document.getElementById('data').value
+    };
+    const dados = JSON.parse(localStorage.getItem('colaboradores')) || [];
+    dados.push(novo);
+    localStorage.setItem('colaboradores', JSON.stringify(dados));
+    form.reset();
+    carregarColaboradores();
+    alert('Colaborador registrado com sucesso!');
+  });
+
+  function baixarCertificado() {
+    const texto = `
+CERTIFICADO DE COLABORAÇÃO – PROJECT SOCIUM
+
+Certificamos que o(a) participante contribuiu como Colaborador(a) voluntário(a),
+apoiando o desenvolvimento e a divulgação do Project Socium.
+
+Data: 
+Assinatura: 
+`;
+    const blob = new Blob([texto], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Certificado_Colaborador.txt';
+    link.click();
+  }
+
+  carregarColaboradores();
+</script>
+
+</body>
+</html>
